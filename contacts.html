@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Контакты — Bellico</title>
+  <meta name="description" content="Контакты Bellico: телефон, email, адрес и форма обратной связи.">
+  <meta name="theme-color" content="#FAF8F4">
+  <meta property="og:title" content="Контакты — Bellico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="contacts">
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div class="container">
+      <div class="page-head">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки"><a href="index.html">Главная</a> / Контакты</nav>
+        <h1 class="page-head__title">Контакты</h1>
+        <p class="section__sub" style="text-align:left;max-width:560px;">Свяжитесь с нами любым удобным способом — мы поможем подобрать мебель и ответим на вопросы.</p>
+      </div>
+
+      <div class="contact-grid" style="padding-bottom:20px;">
+        <!-- Contact details are edited in ONE place: js/config.js (phone/email/address/hours) -->
+        <div class="contact-info">
+          <div class="contact-card reveal">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+            <div><small>Телефон</small>
+              <b><a data-field="phone" href="tel:+70000000000">+7 (000) 000-00-00</a></b>
+            </div>
+          </div>
+          <div class="contact-card reveal">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <div><small>Email</small>
+              <b><a data-field="email" href="mailto:hello@bellico.ru">hello@bellico.ru</a></b>
+            </div>
+          </div>
+          <div class="contact-card reveal">
+            <span class="contact-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+            <div><small>Часы работы</small>
+              <b data-field="hours">Ежедневно, 10:00 — 21:00</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="card card--pad-lg reveal">
+          <h2 style="font-size:1.6rem;margin-bottom:8px;">Напишите нам</h2>
+          <p class="muted" style="margin-bottom:24px;font-size:.92rem;">Заполните форму, и мы свяжемся с вами в ближайшее время.</p>
+          <form id="contact-form" novalidate>
+            <div class="field">
+              <label for="cf-name">Имя <span class="req">*</span></label>
+              <input class="input" id="cf-name" name="cf-name" type="text" placeholder="Ваше имя" autocomplete="name">
+              <div class="field__error"></div>
+            </div>
+            <div class="field">
+              <label for="cf-email">Email <span class="req">*</span></label>
+              <input class="input" id="cf-email" name="cf-email" type="email" placeholder="you@example.com" autocomplete="email">
+              <div class="field__error"></div>
+            </div>
+            <div class="field">
+              <label for="cf-phone">Телефон</label>
+              <input class="input" id="cf-phone" name="cf-phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+              <div class="field__error"></div>
+            </div>
+            <div class="field">
+              <label for="cf-message">Сообщение <span class="req">*</span></label>
+              <textarea class="textarea" id="cf-message" name="cf-message" placeholder="Расскажите, чем мы можем помочь"></textarea>
+              <div class="field__error"></div>
+            </div>
+            <button class="btn btn--block btn--lg" type="submit">Отправить сообщение</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- EDITABLE: map placeholder -->
+      <div class="map-block reveal" style="margin-bottom:20px;">
+        <span>[ Плейсхолдер карты ] Здесь будет интерактивная карта</span>
+      </div>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
