@@ -28,8 +28,8 @@ window.Bellico = window.Bellico || {};
     mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
     pin: '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
     instagram: '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>',
-    whatsapp: '<path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z"/><path d="M8.8 8.6c-.3.7 0 1.6.9 2.7.9 1.1 1.9 1.9 3 2.2.6.2 1.1 0 1.3-.5l.2-.5c.1-.3 0-.6-.3-.8l-1.1-.7c-.2-.2-.5-.1-.7.1l-.3.4c-.6-.3-1.1-.7-1.5-1.2-.4-.5-.7-1-.8-1.6l.4-.3c.2-.2.3-.4.2-.7l-.5-1.1c-.1-.3-.5-.5-.8-.3l-.5.3Z"/>',
     telegram: '<path d="m22 3-20 8 6 2 2 6 3-4 5 4 4-16Z"/>',
+    message: '<path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/>',
     star: '<path d="m12 2 3 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.9 21l1.2-6.8-5-4.9 6.9-1Z"/>',
     info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
     lock: '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
@@ -80,11 +80,6 @@ window.Bellico = window.Bellico || {};
         '<div>' +
           '<div class="footer__logo">Belli<span>c</span>o</div>' +
           '<p class="footer__about">' + esc(B.config.footerAbout) + '</p>' +
-          '<div class="footer__social">' +
-            '<a href="' + esc(B.config.social.instagram) + '" aria-label="Instagram">' + svg('instagram', 18) + '</a>' +
-            '<a href="' + esc(B.config.social.whatsapp) + '" aria-label="WhatsApp">' + svg('whatsapp', 18) + '</a>' +
-            '<a href="' + esc(B.config.social.telegram) + '" aria-label="Telegram">' + svg('telegram', 18) + '</a>' +
-          '</div>' +
         '</div>' +
         '<div class="footer__col">' +
           '<h4>Магазин</h4>' +
@@ -99,9 +94,15 @@ window.Bellico = window.Bellico || {};
           '<a href="privacy.html">Политика конфиденциальности</a>' +
         '</div>' +
         '<div class="footer__col">' +
-          '<h4>Контакты</h4>' +
-          '<button type="button" data-action="open-request">Оставить заявку</button>' +
-          '<a href="' + esc(B.config.emailHref) + '">' + esc(B.config.email) + '</a>' +
+          '<h4>Связаться с нами</h4>' +
+          '<a class="footer__contact-row" href="' + esc(B.config.emailHref) + '">' + svg('mail', 16) + '<span>' + esc(B.config.email) + '</span></a>' +
+          '<a class="footer__contact-row" href="' + esc(B.config.social.telegramManager) + '" target="_blank" rel="noopener">' + svg('telegram', 16) + '<span>Написать менеджеру</span></a>' +
+          '<button type="button" class="footer__contact-row" data-action="open-request">' + svg('message', 16) + '<span>Оставить заявку</span></button>' +
+        '</div>' +
+        '<div class="footer__col">' +
+          '<h4>Наши соц сети</h4>' +
+          '<a class="footer__contact-row" href="' + esc(B.config.social.telegramChannel) + '" target="_blank" rel="noopener">' + svg('telegram', 16) + '<span>Telegram-канал</span></a>' +
+          '<a class="footer__contact-row" href="' + esc(B.config.social.instagram) + '" target="_blank" rel="noopener">' + svg('instagram', 16) + '<span>Instagram</span></a>' +
         '</div>' +
       '</div>' +
       '<div class="footer__bottom">' +

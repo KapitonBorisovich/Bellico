@@ -696,17 +696,16 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; line-height: 
    FOOTER
    ============================================================ */
 .footer { background: var(--text); color: #D9D2C7; padding: 80px 0 36px; margin-top: 96px; }
-.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer__grid { display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr 1fr 1fr; gap: 32px; padding-bottom: 56px; border-bottom: 1px solid rgba(255,255,255,.1); }
 .footer__logo { font-family: var(--font-serif); font-size: 2rem; font-weight: 600; letter-spacing: 0.14em; color: #fff; text-transform: uppercase; }
 .footer__logo span { color: var(--gold); }
 .footer__about { margin-top: 18px; font-size: 0.9rem; color: #A89F92; max-width: 280px; }
 .footer__col h4 { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; font-weight: 700; }
 .footer__col a, .footer__col p, .footer__col button { display: block; width: 100%; text-align: left; color: #C3BBAE; font-size: 0.92rem; margin-bottom: 12px; transition: color .3s; }
 .footer__col a:hover, .footer__col button:hover { color: #fff; }
-.footer__social { display: flex; gap: 12px; margin-top: 18px; }
-.footer__social a { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); display: flex; align-items: center; justify-content: center; color: #C3BBAE; }
-.footer__social a:hover { background: rgba(255,255,255,.08); color: #fff; }
-.footer__social svg { width: 18px; height: 18px; }
+.footer__contact-row { display: flex; align-items: center; gap: 10px; }
+.footer__contact-row svg { flex: none; color: var(--gold); opacity: 0.85; }
+.footer__contact-row span { flex: 1; }
 .footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 28px; font-size: 0.82rem; color: #8B8377; }
 .footer__bottom a:hover { color: #fff; }
 
