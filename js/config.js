@@ -14,7 +14,7 @@ window.Bellico = window.Bellico || {};
     phone: '+7 (925) 115-06-71',
     email: 'manager_bellico@mail.ru',
     hours: 'Ежедневно, 10:00 — 22:00',
-    footerAbout: 'Для тех кто ценит комфорт, красоту и качество по доступной цене.',
+    footerAbout: 'Для тех, кто ценит комфорт, красоту и качество по доступной цене.',
     social: {
       instagram: 'https://www.instagram.com/belleco_store/',           // ссылка на Instagram-аккаунт
       telegramChannel: 'https://t.me/bellico_store',     // ссылка на Telegram-канал (новости, ассортимент)

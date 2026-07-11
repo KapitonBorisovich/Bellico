@@ -668,6 +668,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; line-height: 
 .info-block ul.dash-list { margin: 14px 0; }
 .info-block ul.dash-list li { position: relative; padding-left: 22px; margin-bottom: 10px; color: var(--text-soft); }
 .info-block ul.dash-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+.info-block ul.dash-list li strong { color: var(--text); font-weight: 700; }
 
 .info-layout { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: start; }
 .info-side { position: sticky; top: calc(var(--header-h) + 24px); }
