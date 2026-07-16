@@ -681,7 +681,7 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; line-height: 
 .info-side a svg { width: 19px; height: 19px; flex: none; color: var(--accent-dk); }
 .info-side a:hover { border-color: var(--taupe); color: var(--text); }
 
-.info-icon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 18px 0; }
+.info-icon-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 18px 0; }
 .info-icon-card { display: flex; gap: 14px; padding: 20px; background: var(--bg-soft); border-radius: var(--radius); }
 .info-icon-card__badge {
   width: 40px; height: 40px; border-radius: 50%; background: var(--surface); color: var(--accent-dk);
