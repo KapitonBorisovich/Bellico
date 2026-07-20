@@ -19,6 +19,14 @@ window.Bellico = window.Bellico || {};
       instagram: 'https://www.instagram.com/belleco_store/',           // ссылка на Instagram-аккаунт
       telegramChannel: 'https://t.me/bellico_store',     // ссылка на Telegram-канал (новости, ассортимент)
       telegramManager: 'https://t.me/bellico_manager'      // ссылка на личный чат с менеджером, например https://t.me/username
+    },
+    // Обязательные по закону реквизиты продавца — выводятся мелким текстом в подвале сайта.
+    // Впиши сюда свои настоящие данные ИП/ООО.
+    legal: {
+      entity: 'ИП Конин Капитон Борисович',
+      ogrnip: '326508100415598',
+      inn: '632140229431',
+      address: '[ Юридический адрес ]'
     }
   };
   // Clickable hrefs, derived from phone/email above so they stay in sync.

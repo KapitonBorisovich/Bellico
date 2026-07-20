@@ -732,7 +732,8 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; line-height: 
 .footer__contact-row { display: flex; align-items: center; gap: 10px; }
 .footer__contact-row svg { flex: none; color: var(--gold); opacity: 0.85; }
 .footer__contact-row span { flex: 1; }
-.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 28px; font-size: 0.82rem; color: #8B8377; }
+.footer__legal { padding-top: 28px; font-size: 0.72rem; color: #6E6759; line-height: 1.6; }
+.footer__bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 12px; font-size: 0.82rem; color: #8B8377; }
 .footer__bottom a:hover { color: #fff; }
 
 /* ============================================================

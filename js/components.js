@@ -105,6 +105,10 @@ window.Bellico = window.Bellico || {};
           '<a class="footer__contact-row" href="' + esc(B.config.social.instagram) + '" target="_blank" rel="noopener">' + svg('instagram', 16) + '<span>Instagram</span></a>' +
         '</div>' +
       '</div>' +
+      '<div class="footer__legal">' +
+        esc(B.config.legal.entity) + ' · ОГРНИП ' + esc(B.config.legal.ogrnip) +
+        ' · ИНН ' + esc(B.config.legal.inn) + ' · ' + esc(B.config.phone) + ' · ' + esc(B.config.email) +
+      '</div>' +
       '<div class="footer__bottom">' +
         '<span>© ' + year + ' Bellico. Все права защищены.</span>' +
         '<span><a href="privacy.html">Политика конфиденциальности</a> · <a href="info.html">Info</a> · <a href="contacts.html">Контакты</a></span>' +
