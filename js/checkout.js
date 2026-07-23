@@ -109,6 +109,12 @@ window.Bellico = window.Bellico || {};
               '<div class="demo-note">' + B.icon('info', 20) +
                 '<span>Онлайн-оплата работает в демонстрационном режиме. Архитектура готова к подключению эквайринга, СБП и ЮKassa — заказ будет оформлен, а оплата подключается отдельно.</span></div>' +
             '</section>' +
+            '<div class="field" id="co-consent-group">' +
+              '<label class="checkbox"><input type="checkbox" id="co-agree-oferta" name="co-agree-oferta"> <span>Я согласен с условиями <a href="oferta.html" target="_blank">публичной оферты</a></span></label>' +
+              '<label class="checkbox" style="margin-top:10px;"><input type="checkbox" id="co-agree-pd" name="co-agree-pd"> <span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>' +
+              '<div class="field__error"></div>' +
+            '</div>' +
+            '<label class="checkbox" style="margin:14px 0 20px;"><input type="checkbox" id="co-agree-marketing" name="co-agree-marketing"> <span>Хочу получать на email информацию об акциях и новинках (необязательно)</span></label>' +
             '<button class="btn btn--lg btn--block" type="submit" id="place-order">Подтвердить заказ · ' + B.formatPrice(subtotal + delivery) + '</button>' +
             '<div class="modal__note" style="justify-content:center;margin-top:14px;">' + B.icon('lock', 16) +
               '<span>Ваши данные защищены и используются только для обработки заказа</span></div>' +
@@ -138,6 +144,13 @@ window.Bellico = window.Bellico || {};
       if (phone.replace(/\D/g, '').length < 10) { B.setFieldError(form, 'co-phone', 'Введите корректный телефон'); ok = false; }
       if (!B.validateEmail(email)) { B.setFieldError(form, 'co-email', 'Введите корректный email'); ok = false; }
       if (address.length < 5) { B.setFieldError(form, 'co-address', 'Укажите адрес доставки'); ok = false; }
+      var consentGroup = form.querySelector('#co-consent-group');
+      consentGroup.classList.remove('has-error');
+      if (!form['co-agree-oferta'].checked || !form['co-agree-pd'].checked) {
+        consentGroup.classList.add('has-error');
+        consentGroup.querySelector('.field__error').textContent = 'Подтвердите согласие с офертой и обработкой персональных данных';
+        ok = false;
+      }
       if (!ok) { var firstErr = form.querySelector('.has-error'); if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
 
       var payLabel = (PAYMENTS.find(function (p) { return p.id === selectedPay; }) || PAYMENTS[0]).label;
@@ -147,7 +160,8 @@ window.Bellico = window.Bellico || {};
         items: rows.map(function (r) { return { name: r.product.name, variant: r.variant.label, qty: r.qty, price: r.variant.price, img: r.variant.gallery[0] }; }),
         subtotal: subtotal, delivery: delivery, total: subtotal + delivery,
         payment: payLabel, address: address, name: name, phone: phone, email: email,
-        comment: form['co-comment'].value.trim(), status: 'Принят в обработку'
+        comment: form['co-comment'].value.trim(), status: 'Принят в обработку',
+        marketingConsent: form['co-agree-marketing'].checked
       };
 
       var btn = root.querySelector('#place-order');

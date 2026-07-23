@@ -98,14 +98,14 @@ window.Bellico = window.Bellico || {};
       if (!email) return null;
       var u = users().find(function (x) { return x.email === email; });
       if (!u) return null;
-      return { name: u.name, email: u.email, phone: u.phone, addresses: u.addresses || [], orders: u.orders || [] };
+      return { name: u.name, email: u.email, phone: u.phone, marketingConsent: !!u.marketingConsent, addresses: u.addresses || [], orders: u.orders || [] };
     },
     register: function (data) {
       var all = users();
       if (all.some(function (u) { return u.email.toLowerCase() === data.email.toLowerCase(); })) {
         return { ok: false, error: 'Пользователь с таким email уже зарегистрирован' };
       }
-      all.push({ name: data.name, email: data.email, phone: data.phone, password: data.password, addresses: [], orders: [] });
+      all.push({ name: data.name, email: data.email, phone: data.phone, password: data.password, marketingConsent: !!data.marketingConsent, addresses: [], orders: [] });
       saveUsers(all);
       write(KEYS.session, data.email);
       emit('auth');

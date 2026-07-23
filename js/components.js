@@ -91,6 +91,7 @@ window.Bellico = window.Bellico || {};
           '<h4>Компания</h4>' +
           '<a href="info.html">Info</a>' +
           '<a href="contacts.html">Контакты</a>' +
+          '<a href="oferta.html">Публичная оферта</a>' +
           '<a href="privacy.html">Политика конфиденциальности</a>' +
         '</div>' +
         '<div class="footer__col">' +
@@ -111,7 +112,7 @@ window.Bellico = window.Bellico || {};
       '</div>' +
       '<div class="footer__bottom">' +
         '<span>© ' + year + ' Bellico. Все права защищены.</span>' +
-        '<span><a href="privacy.html">Политика конфиденциальности</a> · <a href="info.html">Info</a> · <a href="contacts.html">Контакты</a></span>' +
+        '<span><a href="oferta.html">Публичная оферта</a> · <a href="privacy.html">Политика конфиденциальности</a> · <a href="info.html">Info</a> · <a href="contacts.html">Контакты</a></span>' +
       '</div>' +
     '</div>';
   }
@@ -200,9 +201,18 @@ window.Bellico = window.Bellico || {};
             '<textarea class="textarea" id="rq-message" name="rq-message" placeholder="Расскажите, что вас интересует (необязательно)"></textarea>' +
             '<div class="field__error"></div>' +
           '</div>' +
+          '<div class="field" id="rq-consent-group">' +
+            '<label class="checkbox"><input type="checkbox" id="rq-agree-pd" name="rq-agree-pd"> <span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>' +
+            '<div class="field__error"></div>' +
+          '</div>' +
           '<button class="btn btn--block btn--lg" type="submit">Отправить заявку</button>' +
         '</form>' +
       '</div>' +
+    '</div>' +
+    /* Cookie banner */
+    '<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Уведомление об использовании cookie">' +
+      '<p>Мы используем файлы cookie для аналитики и улучшения работы сайта. Подробнее — <a href="privacy.html">Политика обработки персональных данных</a>.</p>' +
+      '<button class="btn btn--sm" data-action="accept-cookies">Понятно</button>' +
     '</div>' +
     /* Toasts */
     '<div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>';
@@ -224,12 +234,27 @@ window.Bellico = window.Bellico || {};
     initSticky();
     initSearch();
     initRequestForm();
+    initCookieBanner();
     refreshBadges();
     renderCart();
     initReveal();
 
     store.on('cart', function () { refreshBadges(); renderCart(); });
     store.on('favorites', refreshBadges);
+  }
+
+  /* ---------------- Cookie banner ---------------- */
+  var COOKIE_CONSENT_KEY = 'bellico.cookieConsent';
+  function initCookieBanner() {
+    var banner = document.getElementById('cookie-banner');
+    if (!banner) return;
+    if (localStorage.getItem(COOKIE_CONSENT_KEY)) return;
+    setTimeout(function () { banner.classList.add('is-visible'); }, 600);
+  }
+  function acceptCookies() {
+    localStorage.setItem(COOKIE_CONSENT_KEY, '1');
+    var banner = document.getElementById('cookie-banner');
+    if (banner) banner.classList.remove('is-visible');
   }
 
   function markActiveNav() {
@@ -272,7 +297,8 @@ window.Bellico = window.Bellico || {};
         'close-modal': closeModal,
         'open-menu': openMenu, 'close-menu': closeMenu,
         'open-search': openSearch, 'close-search': closeSearch,
-        'open-request': openRequest, 'close-request': closeRequest
+        'open-request': openRequest, 'close-request': closeRequest,
+        'accept-cookies': acceptCookies
       };
       if (map[a]) { e.preventDefault(); map[a](); }
     });
@@ -381,6 +407,12 @@ window.Bellico = window.Bellico || {};
       var ok = true;
       if (name.length < 2) { B.setFieldError(form, 'rq-name', 'Введите имя'); ok = false; }
       if (phone.replace(/\D/g, '').length < 10) { B.setFieldError(form, 'rq-phone', 'Введите корректный телефон'); ok = false; }
+      if (!form['rq-agree-pd'].checked) {
+        var group = form.querySelector('#rq-consent-group');
+        group.classList.add('has-error');
+        group.querySelector('.field__error').textContent = 'Подтвердите согласие на обработку данных';
+        ok = false;
+      }
       if (!ok) return;
       form.reset();
       closeRequest();

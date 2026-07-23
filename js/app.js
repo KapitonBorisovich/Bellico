@@ -17,6 +17,12 @@
       if (name.length < 2) { B.setFieldError(form, 'cf-name', 'Введите имя'); ok = false; }
       if (!B.validateEmail(email)) { B.setFieldError(form, 'cf-email', 'Введите корректный email'); ok = false; }
       if (message.length < 5) { B.setFieldError(form, 'cf-message', 'Напишите сообщение'); ok = false; }
+      if (!form['cf-agree-pd'].checked) {
+        var group = form.querySelector('#cf-consent-group');
+        group.classList.add('has-error');
+        group.querySelector('.field__error').textContent = 'Подтвердите согласие на обработку данных';
+        ok = false;
+      }
       if (!ok) return;
       form.reset();
       B.ui.toast('Сообщение отправлено. Мы скоро свяжемся с вами!');

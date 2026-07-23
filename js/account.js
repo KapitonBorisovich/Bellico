@@ -80,8 +80,10 @@ window.Bellico = window.Bellico || {};
         field('reg-email', 'Email', 'email', { required: true, placeholder: 'you@example.com', autocomplete: 'email' }) +
         field('reg-phone', 'Телефон', 'tel', { required: true, placeholder: '+7 (___) ___-__-__', autocomplete: 'tel' }) +
         field('reg-password', 'Пароль', 'password', { required: true, placeholder: 'Минимум 6 символов', autocomplete: 'new-password' }) +
-        '<label class="checkbox" style="margin:6px 0 18px;"><input type="checkbox" id="reg-agree"> ' +
-          '<span>Я согласен с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span></label>' +
+        '<label class="checkbox" style="margin:6px 0 10px;"><input type="checkbox" id="reg-agree"> ' +
+          '<span>Даю согласие на <a href="privacy.html" target="_blank">обработку персональных данных</a></span></label>' +
+        '<label class="checkbox" style="margin:0 0 18px;"><input type="checkbox" id="reg-marketing"> ' +
+          '<span>Хочу получать на email информацию об акциях и новинках (необязательно)</span></label>' +
         '<button class="btn btn--block btn--lg" type="submit">Создать аккаунт</button>' +
         '<p class="form-aside">Уже есть аккаунт? <a href="#" data-go="login">Войти</a></p>' +
       '</form>';
@@ -98,9 +100,10 @@ window.Bellico = window.Bellico || {};
       if (!RE_EMAIL.test(email)) { setError(form, 'reg-email', 'Введите корректный email'); ok = false; }
       if (phone.replace(/\D/g, '').length < 10) { setError(form, 'reg-phone', 'Введите корректный телефон'); ok = false; }
       if (pass.length < 6) { setError(form, 'reg-password', 'Минимум 6 символов'); ok = false; }
-      if (!form['reg-agree'] || !document.getElementById('reg-agree').checked) { ui.toast('Подтвердите согласие с политикой', 'info'); ok = false; }
+      if (!form['reg-agree'] || !document.getElementById('reg-agree').checked) { ui.toast('Подтвердите согласие на обработку данных', 'info'); ok = false; }
       if (!ok) return;
-      var res = store.auth.register({ name: name, email: email, phone: phone, password: pass });
+      var marketingConsent = document.getElementById('reg-marketing').checked;
+      var res = store.auth.register({ name: name, email: email, phone: phone, password: pass, marketingConsent: marketingConsent });
       if (!res.ok) { setError(form, 'reg-email', res.error); return; }
       ui.toast('Аккаунт создан. Добро пожаловать!'); renderDashboard(root);
     });
